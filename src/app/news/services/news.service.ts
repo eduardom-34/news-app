@@ -11,11 +11,23 @@ export class NewsService {
     return [...this._tagsHistory];
   }
 
-  searchTag( tag: string ): void {
+  private organizedHistory( tag: string ) {
+
+    tag = tag.toLowerCase();
+
+    if ( this._tagsHistory.includes(tag) ){
+      this._tagsHistory = this._tagsHistory.filter( (oldTag) => oldTag !==tag )
+    }
 
     this._tagsHistory.unshift( tag );
+    this._tagsHistory = this._tagsHistory.splice(0,10);
 
-    console.log(this._tagsHistory);
+  }
+
+  searchTag( tag: string ): void {
+
+    if ( tag.length === 0) return;
+    this.organizedHistory(tag);
 
   }
 
