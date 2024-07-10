@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class NewsService {
 
   private _tagsHistory: string[] = [];
+  private apiKey: string = '1ec2687832ae49f18a4a1d840eb64d40';
 
   constructor() { }
 
