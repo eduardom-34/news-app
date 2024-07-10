@@ -5,12 +5,15 @@
   <div *ngFor="let new of news" class="col-md-3 col-sm-6">
 
     <div class="card mb-2 text-center bg-dark">
-      <!-- TODO: Crear imagen de div -->
+
+      <img [src]="new.urlToImage" [alt]="new.description">
+
       <div class="card-body text-white">
         <p class="card-text">
           {{new.title}}
         </p>
       </div>
+      <a [href]="new.url" target="_blank">Visita esta noticia</a>
     </div>
 
   </div>

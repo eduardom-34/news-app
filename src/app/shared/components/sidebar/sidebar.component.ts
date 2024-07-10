@@ -13,4 +13,9 @@ export class SidebarComponent {
   get tags(): string[] {
     return this.newsService.tagsHistory;
   }
+
+  searchTag( tag: string ){
+    this.newsService.searchTag(tag);
+  }
+
 }
