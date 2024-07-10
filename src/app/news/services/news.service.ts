@@ -44,7 +44,7 @@ export class NewsService {
       .subscribe( resp => {
 
         this.articleList = resp.articles;
-        console.log({ article: this.articleList });
+        // console.log({ article: this.articleList });
 
       });
 
