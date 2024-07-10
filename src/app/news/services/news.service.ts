@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Article, SearchResponse } from '../interfaces/news.interfaces';
 
 @Injectable({providedIn: 'root'})
 export class NewsService {
+
+  public articleList: Article[] = [];
 
   private _tagsHistory: string[] = [];
   private apiKey:       string = '1ec2687832ae49f18a4a1d840eb64d40';
@@ -37,9 +40,11 @@ export class NewsService {
       .set('apiKey', this.apiKey)
       .set('pageSize', '6')
 
-    this.http.get(`${ this.serviceUrl }/everything`, { params })
+    this.http.get<SearchResponse>(`${ this.serviceUrl }/everything`, { params })
       .subscribe( resp => {
-        console.log(resp);
+
+        this.articleList = resp.articles;
+        console.log({ article: this.articleList });
 
       });
 
